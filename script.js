@@ -13,4 +13,7 @@ require(['js/qlik'], function(qlik) {
   
   // Use getObject() to add Qlik Sense Chart to web page
   app.getObject('kpi-0', 'KMFupDp');
+
+  // Use getObject() to add Selections bar
+  app.getObject('current-selections', 'CurrentSelections')
 })
