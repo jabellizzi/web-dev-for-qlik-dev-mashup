@@ -10,10 +10,26 @@ require(['js/qlik'], function(qlik) {
 
   // Open up an app using the openApp() method
   var app = qlik.openApp('WBY Sales');
+
   
   // Use getObject() to add Qlik Sense Chart to web page
-  app.getObject('kpi-0', 'KMFupDp');
+  app.getObject('chart-0', 'KMFupDp');
+
 
   // Use getObject() to add Selections bar
-  app.getObject('current-selections', 'CurrentSelections')
+  app.getObject('current-selections', 'CurrentSelections');
+
+
+  // Use the Visualization API to create a kpi object
+  app.visualization.create('kpi', ['=Count(Distinct CompanyName)']).then(function(vis){
+    vis.show('chart-1');
+  })
+  
+  app.visualization.create('kpi', ['=Count(Distinct EmployeeID)']).then(function(vis){
+    vis.show('chart-2');
+  })
+
+  app.visualization.create('linechart', ['WeekYear', '=Sum(OrderLineAmount)']).then(function(vis){
+    vis.show('chart-3');
+  })
 })
