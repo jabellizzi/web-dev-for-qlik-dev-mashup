@@ -9,6 +9,8 @@ require(['js/qlik'], function(qlik) {
   console.log(qlik);
 
   // Open up an app using the openApp() method
-  var app = qlik.openApp('Executive Dashboard');
-  console.log(app);
+  var app = qlik.openApp('WBY Sales');
+  
+  // Use getObject() to add Qlik Sense Chart to web page
+  app.getObject('kpi-0', 'KMFupDp');
 })
