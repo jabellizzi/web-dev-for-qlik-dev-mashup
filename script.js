@@ -3,13 +3,13 @@ require.config({
   baseUrl: 'http://localhost:4848/resources'
 });
 
+var app;
+
 /* Load in qlik.js file using RequireJS so that we can use the
     qlik object within our callback function */
 require(['js/qlik'], function(qlik) {
-  console.log(qlik);
-
   // Open up an app using the openApp() method
-  var app = qlik.openApp('WBY Sales');
+  app = qlik.openApp('WBY Sales');
 
   
   // Use getObject() to add Qlik Sense Chart to web page
@@ -25,7 +25,7 @@ require(['js/qlik'], function(qlik) {
     vis.show('chart-1');
   })
   
-  app.visualization.create('kpi', ['=Count(Distinct EmployeeID)']).then(function(vis){
+  app.visualization.create('kpi', ['=vWhatIf']).then(function(vis){
     vis.show('chart-2');
   })
 
@@ -33,3 +33,10 @@ require(['js/qlik'], function(qlik) {
     vis.show('chart-3');
   })
 })
+
+
+// What If Slider
+function whatIf(event) {
+  var sliderValue = event.target.valueAsNumber;
+  app.variable.setNumValue('vWhatIf', sliderValue);
+}
