@@ -9,29 +9,55 @@
   </head>
 
   <body>
-    <div id="current-selections"></div>
-
     <div class="container">
       <div class="row">
-
-        <div class="col-md-4">
-          <div id="chart-0" class="chart-container"></div>
+        <div class="col-xs-12 nav-bar">
+          <button id="dashboard-button" class="col-xs-6 btn btn-primary" onclick="changeSheet('dashboard')">Dashboard</button>
+          <button id="performance-button" class="col-xs-6 btn" onclick="changeSheet('performance')">Performance</button>
         </div>
 
-        <div class="col-md-4">
-          <div id="chart-1" class="chart-container"></div>
+        <div id="dashboard-sheet">
+          <div class="col-md-4">
+            <div id="kpi-0" class="chart-container kpi"></div>
+          </div>
+  
+          <div class="col-md-4">
+            <div id="kpi-1" class="chart-container kpi"></div>
+          </div>
+  
+          <div class="col-md-4">
+            <div id="kpi-2" class="chart-container kpi"></div>
+          </div>
+  
+          <div class="col-md-8">
+            <div id="scatter-0" class="chart-container"></div>
+          </div>
+  
+          <div class="col-md-4">
+            <div id="bar-0" class="chart-container"></div>
+          </div>
+          
+          <div id="what-if-slider-container" class="col-md-12">
+            <input id="what-if-slider" type="range" min="0" max="400" step="20" oninput="whatIf(event)">Threshold: <span id="slider-value">200</span>
+          </div>
+          
+          <div class="col-md-12">
+            <div id="line-0" class="chart-container"></div>
+          </div>
         </div>
 
-        <div class="col-md-4">
-          <div id="chart-2" class="chart-container"></div>
-        </div>
-        
-        <div class="col-md-12">
-          <input type="range" min="0" max="400" step="20" onchange="whatIf(event)">
-        </div>
-        
-        <div class="col-md-12">
-          <div id="chart-3" class="chart-container"></div>
+        <div id="performance-sheet" class="hidden">
+          <div class="col-md-8">
+            <div id="pie-0" class="chart-container"></div>
+          </div>
+
+          <div class="col-md-4">
+            <div id="line-1" class="chart-container"></div>
+          </div>
+
+          <div class="col-md-12">
+            <div id="table-0" class="chart-container"></div>
+          </div>
         </div>
       </div>
     </div>
