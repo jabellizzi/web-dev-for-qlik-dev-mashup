@@ -8,12 +8,13 @@ var app;
 /* Load in qlik.js file using RequireJS so that we can use the
     qlik object within our callback function */
 require(['js/qlik'], function(qlik) {
+
   // Open up an app using the openApp() method
-  app = qlik.openApp('WBY Sales');
+  app = qlik.openApp('Helpdesk Management');
 
   
   // Use getObject() to add Qlik Sense Chart to web page
-  app.getObject('chart-0', 'KMFupDp');
+  app.getObject('chart-0', 'jTuCwkB');
 
 
   // Use getObject() to add Selections bar
@@ -21,7 +22,7 @@ require(['js/qlik'], function(qlik) {
 
 
   // Use the Visualization API to create a kpi object
-  app.visualization.create('kpi', ['=Count(Distinct CompanyName)']).then(function(vis){
+  app.visualization.create('kpi', ['=Sum([Number of New Cases])']).then(function(vis){
     vis.show('chart-1');
   })
   
@@ -29,7 +30,7 @@ require(['js/qlik'], function(qlik) {
     vis.show('chart-2');
   })
 
-  app.visualization.create('linechart', ['WeekYear', '=Sum(OrderLineAmount)']).then(function(vis){
+  app.visualization.create('linechart', ['Date.autoCalendar.Date', '=if(Sum([Number of New Cases]) > vWhatIf, Sum([Number of New Cases]), 0)']).then(function(vis){
     vis.show('chart-3');
   })
 })
