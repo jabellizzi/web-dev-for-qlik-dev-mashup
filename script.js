@@ -9,10 +9,10 @@ require(['js/qlik'], function(qlik) {
   console.log(qlik);
 
   // Open up an app using the openApp() method
-  var app = qlik.openApp('WBY Sales');
+  var app = qlik.openApp('Helpdesk Management');
   
   // Use getObject() to add Qlik Sense Chart to web page
-  app.getObject('kpi-0', 'KMFupDp');
+  app.getObject('kpi-0', 'jTuCwkB');
 
   // Use getObject() to add Selections bar
   app.getObject('current-selections', 'CurrentSelections')
